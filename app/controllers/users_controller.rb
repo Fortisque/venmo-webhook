@@ -69,7 +69,6 @@ class UsersController < ApplicationController
   end
 
   def respond_to_post
-    byebug
     data = {}
     data[:created] = params[:date_created]
     data[:type] = params[:type]
