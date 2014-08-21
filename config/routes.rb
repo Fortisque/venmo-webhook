@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :users
+  devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout', :sign_up => "signup"}
+
+  get 'venmo_webhooks/:id' => 'users#respond_to_get'
+  post 'venmo_webhooks/:id' => 'users#respond_to_post'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
