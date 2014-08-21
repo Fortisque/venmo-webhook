@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :respond_to_post]
 
+  skip_before_filter :verify_authenticity_token, only: [:respond_to_post]
+
   # GET /users
   # GET /users.json
   def index
