@@ -69,10 +69,11 @@ class UsersController < ApplicationController
   end
 
   def respond_to_post
+    byebug
     data = {}
     data[:created] = params[:date_created]
     data[:type] = params[:type]
-    data[:amount] = params[:data][:amount]
+    data[:amount] = params[:data].try(:[], :amount)
     data[:from_name] = params[:data][:actor].try(:[], :display_name)
     data[:to_name] = params[:data][:target].try(:[], :user).try(:[], :display_name)
 
