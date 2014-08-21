@@ -73,8 +73,8 @@ class UsersController < ApplicationController
     data[:created] = params[:date_created]
     data[:type] = params[:type]
     data[:amount] = params[:data][:amount]
-    data[:from_name] = params[:data][:actor][:display_name]
-    data[:to_name] = params[:data][:target][:user][:display_name]
+    data[:from_name] = params[:data][:actor].try(:[], :display_name)
+    data[:to_name] = params[:data][:target].try(:[], :user).try(:[], :display_name)
 
     UserMailer.welcome_email(data, @user).deliver
 
