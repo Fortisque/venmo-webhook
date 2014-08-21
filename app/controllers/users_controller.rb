@@ -76,7 +76,7 @@ class UsersController < ApplicationController
     data[:from_name] = params[:data][:actor].try(:[], :display_name)
     data[:to_name] = params[:data][:target].try(:[], :user).try(:[], :display_name)
 
-    UserMailer.welcome_email(data, @user).deliver
+    VenmoMailer.venmo_email(data, @user).deliver
 
     render json: data
   end
